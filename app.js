@@ -2,12 +2,12 @@ const express= require('express');
 const cors =require('cors');
 const app=express();
 const puerto= 4000;
+require('./config/database')
 
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({extended:true}))
-
-require('./config/database')
+app.use('/public',express.static('./imagenes'));
 
 app.use('/perros',require('./routes/perrosRoutes'));
 

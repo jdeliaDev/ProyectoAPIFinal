@@ -22,7 +22,8 @@ const traerPerros=(req,res)=>{
 };
 
 const agregarUnPerro=(req,res)=>{
-    const{nombre,padres,fechaNacimiento,imagen,sexo}=req.body;
+    const{nombre,padres,fechaNacimiento,sexo}=req.body;
+    const imagen='http://localhost:4000/public/'+ req.file.filename;
     dbConnection.query('INSERT INTO perros (nombre,padres,fechaNacimiento,imagen,sexo)VALUES(?,?,?,?,?)',[nombre,padres,fechaNacimiento,imagen,sexo],(error,data)=>{
         if(error){
             res.send(error)

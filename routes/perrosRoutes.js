@@ -1,5 +1,6 @@
 const express= require('express');
 const router=express.Router();
+const upload=require('../multer/cargarImagen');
 
 const{
     traerPerros,
@@ -11,7 +12,7 @@ const{
 
 router.get("",traerPerros);
 router.get("/:sexo",traerPerrosSexo);
-router.post('/agregarPerro',agregarUnPerro);
+router.post('/agregarPerro',upload.single('imagen'),agregarUnPerro);
 router.delete('/eliminarPerro',eliminarUnPerro);
 
 
