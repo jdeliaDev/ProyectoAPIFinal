@@ -6,6 +6,7 @@ const{
     traerPerros,
     traerPerrosSexo,
     agregarUnPerro,
+    modificarUnPerro,
     eliminarUnPerro
 }=require('../controllers/perrosControllers')
 
@@ -13,7 +14,8 @@ const{
 router.get("",traerPerros);
 router.get("/:sexo",traerPerrosSexo);
 router.post('/agregarPerro',upload.single('imagen'),agregarUnPerro);
-router.delete('/eliminarPerro',eliminarUnPerro);
+router.put('/modificarPerro/:id',modificarUnPerro);
+router.delete('/eliminarPerro/:id',eliminarUnPerro);
 
 
 module.exports=router

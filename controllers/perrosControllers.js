@@ -34,18 +34,30 @@ const agregarUnPerro=(req,res)=>{
     })
 };
 
-const eliminarUnPerro=(req,res)=>{
-    //traer info de que peli eliminar
-    const dato=req.params.id;
-    //db que la elimine
-    dbConnection.query('DELETE  FROM perros WHERE id=?',[dato],(error,mensajeOk)=>{
+const modificarUnPerro=(req,res)=>{
+    const id=req.params.id;
+    dbConnection.query('UPDATE perros SET ? WHERE id=?',[req.body,id],(error,data)=>{
         if(error){
             res.send(error)
         }else{
-            res.send("El perro se elimino correctamente")
+            //res.redirect("/:sexo")
+            res.status(200).json("Perro cargado exitosamente");
+        }
+    })
+};
+
+const eliminarUnPerro=(req,res)=>{
+    //traer info de que peli eliminar
+    const id=req.params.id;
+    //db que la elimine
+    dbConnection.query('DELETE FROM perros WHERE id=?',[id],(error,mensajeOk)=>{
+        if(error){
+            res.send(error)
+        }else{
+            res.status(200).json("Perro eliminado exitosamente");            
         }
     })
 
 };
 
-module.exports={traerPerros,traerPerrosSexo,agregarUnPerro, eliminarUnPerro}
+module.exports={traerPerros,traerPerrosSexo,agregarUnPerro, modificarUnPerro, eliminarUnPerro}

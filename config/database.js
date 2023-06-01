@@ -1,9 +1,11 @@
+require('dotenv').config()
 const mysql=require('mysql2');
 
 const dataBaseInfo={
-    host:'localhost',
-    user:'root',
-    database:'criadero_Rusherking'
+    host:process.env.HOST,
+    user:process.env.USER_DB,
+    database:process.env.DB,
+    password:process.env.PASS
 };
 
 const dbConnection=mysql.createConnection(dataBaseInfo);
