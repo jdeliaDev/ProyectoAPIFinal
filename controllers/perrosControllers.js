@@ -36,7 +36,9 @@ const agregarUnPerro=(req,res)=>{
 
 const modificarUnPerro=(req,res)=>{
     const id=req.params.id;
-    dbConnection.query('UPDATE perros SET ? WHERE id=?',[req.body,id],(error,data)=>{
+    const data = req.body;
+    delete data.imagen;
+    dbConnection.query('UPDATE perros SET ? WHERE id=?',[data,id],(error,data)=>{
         if(error){
             res.send(error)
         }else{

@@ -5,7 +5,8 @@ const dataBaseInfo={
     host:process.env.HOST,
     user:process.env.USER_DB,
     database:process.env.DB,
-    password:process.env.PASS
+    password:process.env.PASS,
+    dateStrings:true
 };
 
 const dbConnection=mysql.createConnection(dataBaseInfo);
